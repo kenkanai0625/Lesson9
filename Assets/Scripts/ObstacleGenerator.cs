@@ -21,6 +21,7 @@ public class ObstacleGenerator : MonoBehaviour {
     public GameObject ufo;
     public GameObject asteroid;
     public GameObject meteo;
+    public GameObject alien;
     
     private bool firebool=false;
     private bool boombool = false;
@@ -34,6 +35,7 @@ public class ObstacleGenerator : MonoBehaviour {
     private float ufolastpos = 595.0f;
     private float asteroidlastpos = 695.0f;
     private float meteolastpos = 792.5f;
+    private float alienlastpos = 895.5f;
 
 	// Use this for initialization
 	void Start () {
@@ -226,7 +228,7 @@ public class ObstacleGenerator : MonoBehaviour {
             if (player.transform.position.y - asteroidlastpos >= 5&&asteroidbool==false)
             {
                 GameObject go = Instantiate(asteroid) as GameObject;
-                go.transform.position = new Vector3(2, player.transform.position.y + 15, 0);
+                go.transform.position = new Vector3(2.25f, player.transform.position.y + 15, 0);
                 asteroidbool = true;
                 asteroidlastpos += 5.0f;
             }
@@ -239,7 +241,7 @@ public class ObstacleGenerator : MonoBehaviour {
             }
         }
 
-        if (player.transform.position.y >= 800 && player.transform.position.y <= 891)
+        if (player.transform.position.y >= 800 && player.transform.position.y <= 883)
         {
             if (player.transform.position.y - meteolastpos >= 7.5)
             {
@@ -266,6 +268,25 @@ public class ObstacleGenerator : MonoBehaviour {
                     go.transform.position = new Vector3(8, player.transform.position.y + 30, 0);
                 }
                 meteolastpos += 7.5f;
+            }
+        }
+
+        if (player.transform.position.y >= 900 && player.transform.position.y <= 985)
+        {
+            if (player.transform.position.y - alienlastpos >= 4.5)
+            {
+                int i = Random.Range(0, 2);
+                if (i == 0)
+                {
+                    GameObject go = Instantiate(alien) as GameObject;
+                    go.transform.position = new Vector3(-2.3f, player.transform.position.y + 10, 0);
+                }
+                else
+                {
+                    GameObject go = Instantiate(alien) as GameObject;
+                    go.transform.position = new Vector3(2.3f, player.transform.position.y + 10, 0);
+                }
+                alienlastpos += 4.5f;
             }
         }
     }

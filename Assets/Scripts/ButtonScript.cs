@@ -19,5 +19,8 @@ public class ButtonScript : MonoBehaviour {
     {
         SceneManager.LoadScene("MainScene");
         PlayerController.gameover = false;
+        PlayerController.onemorebool = true;
+        PlayerController.countdownbool = true;
+        PlayerController.startbool = true;
     }
 }
